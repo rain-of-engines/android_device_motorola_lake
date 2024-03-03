@@ -31,7 +31,7 @@ AB_OTA_PARTITIONS += \
     vendor
 
 # Assertions
-TARGET_BOARD_INFO_FILE := device/motorola/lake/board-info.txt
+TARGET_BOARD_INFO_FILE := device/motorola/lake/configs/board-info.txt
 TARGET_OTA_ASSERT_DEVICE := lake,lake_n
 
 # Display
@@ -50,7 +50,7 @@ BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/c0c4000.sdhci
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-TARGET_KERNEL_CONFIG := lineageos_lake_defconfig
+TARGET_KERNEL_CONFIG := lake_defconfig
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -70,8 +70,8 @@ BOARD_SUPER_PARTITION_VENDOR_DEVICE_SIZE := 939524096
 TARGET_HAS_NO_WLAN_STATS := true
 
 # Properties
-TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/properties/system_ext.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_UI_BLANK_UNBLANK_ON_INIT := true
