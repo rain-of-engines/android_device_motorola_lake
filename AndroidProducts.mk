@@ -14,10 +14,4 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_lake.mk
-
-COMMON_LUNCH_CHOICES := \
-    aosp_lake-eng \
-    aosp_lake-user \
-    aosp_lake-userdebug
+PRODUCT_MAKEFILES := $(wildcard device/motorola/targets/devices/lake/*.mk)

@@ -17,6 +17,8 @@
 # Inherit from motorola sdm660-common
 $(call inherit-product, device/motorola/sdm660-common/common.mk)
 
+PRODUCT_MODEL := Moto G7 Plus
+
 PRODUCT_ACTIONABLE_COMPATIBLE_PROPERTY_DISABLE := true
 
 # Overlays
