@@ -14,10 +14,18 @@
 # limitations under the License.
 #
 
-# Vendor blobs
-$(call inherit-product, vendor/motorola/lake/lake-vendor.mk)
+# Inherit from motorola sdm660-common
+$(call inherit-product, device/motorola/sdm660-common/common.mk)
 
 PRODUCT_ACTIONABLE_COMPATIBLE_PROPERTY_DISABLE := true
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+PRODUCT_PACKAGES += \
+    NoCutoutOverlay
+
+PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # A/B updater
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -26,16 +34,12 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay
-
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# API
+PRODUCT_SHIPPING_API_LEVEL := 28
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -107,11 +111,9 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
-# Inherit from motorola sdm660-common
-$(call inherit-product, device/motorola/sdm660-common/common.mk)
-
 # VNDK
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v32/arm64/arch-arm-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libutils-v32.so
 
-PRODUCT_SHIPPING_API_LEVEL := 28
+# Inherit the proprietary files
+$(call inherit-product, vendor/motorola/lake/lake-vendor.mk)

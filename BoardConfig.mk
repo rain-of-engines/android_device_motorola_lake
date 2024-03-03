@@ -14,12 +14,10 @@
 # limitations under the License.
 #
 
-# Inherit from motorola sdm660-common
-# This flag needs to be set first
-BOARD_USES_KEYMASTER_4 := true
--include device/motorola/sdm660-common/BoardConfigCommon.mk
-
 DEVICE_PATH := device/motorola/lake
+
+# Inherit from motorola sdm660-common
+-include device/motorola/sdm660-common/BoardConfigCommon.mk
 
 # A/B updater
 AB_OTA_UPDATER := true
@@ -53,7 +51,7 @@ TARGET_KERNEL_CONFIG := lake_defconfig
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864 # 64 MB
 BOARD_DTBOIMG_PARTITION_SIZE := 16777216 # 16 MB
 
-# Retrofit dynamic partitions
+# Partitions dynamic
 BOARD_SUPER_PARTITION_GROUPS := moto_dynamic_partitions
 BOARD_SUPER_PARTITION_BLOCK_DEVICES := system vendor
 BOARD_SUPER_PARTITION_SYSTEM_DEVICE_SIZE := 2969567232 # 2832 MB
@@ -78,6 +76,9 @@ ENABLE_VENDOR_RIL_SERVICE := true
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
+# This flag needs to be set first
+BOARD_USES_KEYMASTER_4 := true
 
 # inherit from the proprietary version
 include vendor/motorola/lake/BoardConfigVendor.mk
