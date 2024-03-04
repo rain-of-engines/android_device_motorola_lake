@@ -24,12 +24,12 @@ PRODUCT_MODEL := Moto G7 Plus
 PRODUCT_ACTIONABLE_COMPATIBLE_PROPERTY_DISABLE := true
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
-
 PRODUCT_PACKAGES += \
-    NoCutoutOverlay
-
-PRODUCT_ENFORCE_RRO_TARGETS := *
+    FrameworksOverlay \
+    NoCutoutOverlay \
+    SettingsOverlayLake \
+    SettingsProviderLake \
+    SystemUIOverlayLake
 
 # A/B updater
 AB_OTA_POSTINSTALL_CONFIG += \
